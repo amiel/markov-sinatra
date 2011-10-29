@@ -23,8 +23,14 @@ class MarkovChainer
   end
 
   def generate_sentence(word = nil)
-    word ||= rand(@beginnings.size)
-    res = @beginnings[word]
+    if word
+      res = @beginnings.find { |b| word == b.first }
+    end
+
+    res ||= @beginnings[rand(@beginnings.size)]
+
+    return '' if res.nil?
+
     loop {
       unless nw = next_word_for(res[-order, order])
         return res[0..-2].join(" ") + res.last
