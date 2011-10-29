@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    markov (0.0.1)
     rack (1.2.2)
     sinatra (1.2.1)
       rack (~> 1.1)
@@ -12,5 +11,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  markov
   sinatra

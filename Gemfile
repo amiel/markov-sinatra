@@ -1,4 +1,4 @@
 source :rubygems
 
 gem 'sinatra'
-gem 'markov'
+# gem 'markov'
