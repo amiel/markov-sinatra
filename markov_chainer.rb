@@ -22,8 +22,9 @@ class MarkovChainer
     }
   end
 
-  def generate_sentence
-    res = @beginnings[rand(@beginnings.size)]
+  def generate_sentence(word = nil)
+    word ||= rand(@beginnings.size)
+    res = @beginnings[word]
     loop {
       unless nw = next_word_for(res[-order, order])
         return res[0..-2].join(" ") + res.last
@@ -31,6 +32,7 @@ class MarkovChainer
       res << nw
     }
   end
+
 
   private
 

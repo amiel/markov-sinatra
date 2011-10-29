@@ -11,7 +11,7 @@ mc = MarkovChainer.new 2
 get '/*' do
   # TODO: use params[:split] to generate texts
   # content_type :json
-  mc.generate_sentence
+  mc.generate_sentence(params[:split].first)
 end
 
 
