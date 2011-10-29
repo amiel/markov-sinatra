@@ -2,7 +2,6 @@ require 'bundler/setup'
 require 'sinatra'
 
 APP_ROOT = Pathname.new(File.expand_path("..", __FILE__))
-# require APP_ROOT.join('app/models')
 
 
 require APP_ROOT.join('markov_chainer')
@@ -15,7 +14,7 @@ get '/' do
 end
 
 
-post '/add' do
+post '/' do
   # content_type :json
   if params[:words]
     mc.add_text params[:words]
