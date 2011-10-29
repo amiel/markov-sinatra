@@ -8,9 +8,15 @@ require APP_ROOT.join('markov_chainer')
 
 mc = MarkovChainer.new 2
 
+helpers do
+  def path_as_words
+    params[:splat].join.split('/')
+  end
+end
+
 get '/*' do
   # content_type :json
-  if params[:splat] && (word = params[:splat].first)
+  if (word = path_as_words.first) && 0 < word.size
     mc.generate_sentence word
   else
     mc.generate_sentence
@@ -20,9 +26,12 @@ end
 
 post '/*' do
   # content_type :json
-  if params[:splat]
-    mc.add_text params[:splat].join(' ')
+  if 0 < path_as_words.size
+    text = path_as_words.join(' ')
+    mc.add_text text
+    'thanks'
+  else
+    "thanks for nothin'"
   end
-  'thanks'
 end
 
