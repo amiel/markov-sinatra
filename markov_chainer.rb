@@ -23,11 +23,9 @@ class MarkovChainer
   end
 
   def generate_sentence(word = nil)
-    if word
-      res = @beginnings.find { |b| word == b.first }
-    end
+    list = (word ? @beginnings.select { |b| word == b.first } : @beginnings)
 
-    res ||= @beginnings[rand(@beginnings.size)]
+    res = list[rand(list.size)] if 0 < list.size
 
     return '' if res.nil?
 
