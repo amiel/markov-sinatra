@@ -18,7 +18,7 @@ end
 post '/*' do
   # content_type :json
   if params[:splat]
-    mc.add_text params[:splat]
+    mc.add_text params[:splat].join(' ')
   end
   'thanks'
 end
