@@ -8,16 +8,17 @@ require APP_ROOT.join('markov_chainer')
 
 mc = MarkovChainer.new 2
 
-get '/' do
+get '/*' do
+  # TODO: use params[:split] to generate texts
   # content_type :json
   mc.generate_sentence
 end
 
 
-post '/' do
+post '/*' do
   # content_type :json
-  if params[:words]
-    mc.add_text params[:words]
+  if params[:splat]
+    mc.add_text params[:splat]
   end
   'thanks'
 end
